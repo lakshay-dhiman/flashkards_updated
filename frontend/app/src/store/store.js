@@ -1,0 +1,28 @@
+import { createStore } from 'vuex'
+
+const store = createStore({
+    state () {
+      return {
+        loggedin : false,
+        user_email : null
+      }
+    },
+    mutations: {
+        user_login(state,value){
+            state.loggedin = value
+        },
+        setEmail(state,email){
+            state.user_email = email
+        }
+    },
+    getters : {
+        returnLoggedIn(state){
+            return state.loggedin
+        },
+        retrunEmail(state){
+            return state.user_email
+        }
+    }
+})
+
+export default store

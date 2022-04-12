@@ -1,0 +1,397 @@
+swagger: "2.0"
+info:
+  description: "This is API for the flashkards application"
+  version: "1.0.0"
+  title: "Flashkards"
+host: "localhost:8080"
+basePath: "/"
+schemes:
+- "https"
+- "http"
+paths:
+
+  /register:
+    post:
+      summary: "Register New User"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/UserResp"
+          
+  /login:
+    post:
+      summary: "Existing user login"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/LoginResp"   
+
+  /api/add/deck:
+    post:
+      summary: "Add a new deck"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/AddDeck"
+      - in: "header"
+        name: "authentication_token"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Success"
+
+  /api/get/decks:
+    get:
+      summary: "Get all decks of a user"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "header"
+        name: "authentication_token"
+        required: true
+        type: "string"
+
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/DecksResp"  
+            
+  /api/add/card:
+    post:
+      summary: "add cards to a deck"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/AddCard"
+      - in: "header"
+        name: "authentication_token"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/AddCardResp"
+            
+  /api/get/cards:
+    post:
+      summary: "get all the cards of a deck"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/GetCards"
+      - in: "header"
+        name: "authentication_token"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/GetCardsResp"
+
+  /api/put/review:
+    post:
+      summary: "review a deck"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/review"
+      - in: "header"
+        name: "authentication_token"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/reviewResp"
+  
+  /api/delete/deck:
+    post:
+      summary: "delete a deck"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/delete"
+      - in: "header"
+        name: "authentication_token"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Success"
+          
+  /api/alldecks:
+    post:
+      summary: "Get all decks of a user"
+      produces:
+      - "application/json"
+
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/DecksResp"  
+
+  /api/allcards:
+    post:
+      summary: "get all the cards of a deck"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/GetCards"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/GetCardsResp"
+
+      
+      
+definitions:
+  User:
+    type: "object"
+    properties:
+      email:
+        type: "string"
+      password:
+        type: "string"
+    xml:
+      name: "User"
+      
+  UserResp:
+    type: "object"
+    properties:
+      meta:
+        type: "object"
+        properties:
+          code:
+            type: "integer"
+      response:
+        type: "object"
+        properties:
+          csrf_token:
+            type: "string"
+          user:
+            type: "object"
+    xml:
+      name: "UserResp"
+
+
+
+  LoginResp:
+    type: "object"
+    properties:
+      meta:
+        type: "object"
+        properties:
+          code:
+            type: "integer"
+      response:
+        type: "object"
+        properties:
+          csrf_token:
+            type: "string"
+          user:
+            type: "object"
+            properties:
+              authentication_token: 
+                type: "string"
+    xml:
+      name: "LoginResp"
+
+
+  AddDeck:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        
+  DecksResp:
+    type: "object"
+    properties:
+      meta:
+        type: "object"
+        properties:
+          code:
+            type: "integer"
+      response:
+        type: "object"
+        properties:
+          data:
+            type: "array"
+            items:
+              type: "object"
+              properties:
+                id:
+                  type: "integer"
+                name:
+                  type: "string"
+                last-rev:
+                  type: "string"
+                score: 
+                  type: "integer"
+  
+  AddCard:
+    type: "object"
+    properties:
+      front:
+        type: "string"
+      back:
+        type: "string"
+      deck_id:
+        type: "integer"
+    xml:
+      name: "AddCard"
+      
+  
+  AddCardResp:
+    type: "object"
+    properties:
+      meta:
+        type: "object"
+        properties:
+          code:
+            type: "integer"
+      response:
+        type: "object"
+        properties:
+          data:
+            type: "object"
+            properties:
+              count:
+                type: "integer"
+              front:
+                type: "string"
+              back:
+                type: "string"
+              id:
+                type: "integer"
+                
+
+  GetCards:
+    type: "object"
+    properties:
+      deck_id:
+        type: "integer"
+    xml:
+      name: "getCard"
+      
+  
+  GetCardsResp:
+    type: "object"
+    properties:
+      meta:
+        type: "object"
+        properties:
+          code:
+            type: "integer"
+      response:
+        type: "object"
+        properties:
+          data:
+            type: "array"
+            items:
+              type: "object"
+              properties:
+                count:
+                  type: "integer"
+                front:
+                  type: "string"
+                back:
+                  type: "string"
+                id: 
+                  type: "integer" 
+          deck_name:
+            type: "string"
+            
+  review:
+    type: "object"
+    properties:
+      deck_id:
+        type: "integer"
+      score:
+        type: "integer"
+    xml:
+      name: "getCard"
+  
+  
+  reviewResp:
+    type: "object"
+    properties:
+      meta:
+        type: "object"
+        properties:
+          code:
+            type: "integer"
+      response:
+        type: "object"
+        properties:
+          message:
+            type: "string"
+            example: reviewed succesfully
+            
+            
+            
+  delete:
+    type: "object"
+    properties:
+      deck_id:
+        type: "integer"
+            
+            
+    
+            
+            
+            
+            
+            
+            
+            
+            
+            

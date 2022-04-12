@@ -1,0 +1,4 @@
+deck id, deck name, deck last rev, deck count, deck score, card front, card back, card id
+1, name, 2022-03-20 23:14:47.314824, 1, 2, newNewNewFront, newNewNewBack, 1
+1, name, 2022-03-20 23:14:47.314824, 1, 2, cat, billi, 2
+1, name, 2022-03-20 23:14:47.314824, 1, 2, zarra zarra, touch me , 3

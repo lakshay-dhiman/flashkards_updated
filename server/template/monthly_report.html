@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div id="logo">
+        &lt;&nbsp;&nbsp;&nbsp;<span id="first">FLASH</span>
+        <span id="second">KARDS</span>&nbsp;&nbsp;&nbsp;>
+        <span class="devi">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        <span id="monthly_rep">MONTHLY REPORT</span>
+    </div>
+    <div class="welcom_message">Hello <span>{{email}}</span> , here is your monthly report from FLASHKARDS:</div>
+
+    <div class="report">
+        <div class="decks_created report_fact">
+            <div class="marker">></div>
+            <div class="factor">Number of decks created this month </div>
+            <div class="devider">|</div>
+            <div class="number">
+                {{deck_no}}
+                <!-- 69 -->
+
+            </div>
+        </div>
+        <div class="decks_created report_fact">
+            <div class="marker">></div>
+            <div class="factor">Number of cards created this month  </div>
+            <div class="devider">|</div>
+            <div class="number">
+                {{card_no}}
+                <!-- 69 -->
+            </div>
+        </div>
+        <div class="decks_created report_fact">
+            <div class="marker">></div>
+            <div class="factor">Number of times revised this month  </div>
+            <div class="devider">|</div>
+            <div class="number">
+                {{revised_no}}
+                <!-- 69 -->
+            </div>
+        </div>
+
+        <p class="thanku">
+            Thanku for using FLASHKARDS !! Keep using the app and have a happy learning !!  
+        </p>
+    </div>
+
+
+</body>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu&family=Unica+One&family=Yaldevi:wght@400;700&display=swap');    
+    :root{
+        background: black;
+        margin-left: 20px;
+        width: 50vw;
+        margin: auto;
+        /* margin-left: 20px; */
+    }
+    #logo{
+        /* margin-left: 20px; */
+        color: white;
+        margin: auto;
+        /* margin-top: 50px;
+        width: fit-content; */
+    }
+
+    #first{
+        font-family: 'Unica One', cursive;
+        color: #B9B9B9;
+        font-size: 1.2em;
+    }
+    #second{
+        font-family: 'Yaldevi', sans-serif;
+        color: #EDF875;
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+
+    #monthly_rep{
+        font-family: 'Unica One', cursive;
+        font-size: 1.5em;
+        color:  white;
+    }
+
+    .devi{
+        color: #EDF875;
+        font-size: 1.8em;
+    }
+
+    .welcom_message{
+        color: rgb(184, 184, 184) ;
+        margin-top: 30px;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 1.1em;
+    }
+
+    .report{
+        color: white;
+
+        margin-top: 20px;
+    }
+
+    .report_fact{
+        display: flex;
+        flex-direction: row;
+        margin-top: 20px;
+        /* width: 50%; */
+        align-content: center;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+    }
+
+    .marker{
+        color: #EDF875;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bolder;
+        font-size: 1.2em;
+    }
+
+    .factor{
+        margin-left: 20px;
+        font-size: 1em;
+        font-family: 'Ubuntu', sans-serif;
+        /* width: 50%; */
+    }
+
+    .devider{
+        margin-left: 20px;
+        color: #EDF875;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bolder;
+        font-size: 1.2em;
+    }
+
+    .number{
+        margin-left: 20px;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bolder;
+        font-size: 1.2em;
+    }
+
+    .thanku{
+        /* width: 50%; */
+        font-family: 'Ubuntu', sans-serif;
+        color: rgb(131, 131, 131);
+        margin-top: 50px;
+        font-size: 0.9em;
+        /* margin-left: 20px; */
+        margin-bottom: 50px;
+
+    }
+    @media screen and (max-width: 800px){
+        :root{  
+            width: 60vw;
+        }
+    }
+    @media screen and (max-width: 600px){
+        :root{  
+            width: 80vw;
+        }
+    }
+
+</style>
+
+</html>
